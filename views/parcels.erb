@@ -1,0 +1,33 @@
+    <h1>Parcel Tracker</h1>
+    <p>Enter the information about your parcel:</p>
+
+    <% if @parcels.any? %>
+      <ul>
+        <% @parcels.each do |parcel| %>
+          <li><a href="/parcels/<%= parcel.id %>"><%= parcel.name %></a></li>
+          <li>Weight: <%= parcel.weight %></li>
+          <li>Length: <%= parcel.length %></li>
+          <li>Height: <%= parcel.height %></li>
+          <li>Width: <%= parcel.width %></li>
+          <li>id: <%= parcel.id %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>There are currently no parcels to display.</p>
+    <% end %>
+
+    <form action="/parcels" method="post">
+      <div class="form-group">
+        <label for="parcel_name">Enter the name</label>
+        <input name="parcel_name" class="form-control" type="text">
+        <label for="parcel_weight">Enter the weight of your parcel</label>
+        <input name="parcel_weight" class="form-control" type="number">
+        <label for="parcel_length">Enter the length of your parcel</label>
+        <input name="parcel_length" class="form-control" type="number">
+        <label for="parcel_height">Enter the height of your parcel</label>
+        <input name="parcel_height" class="form-control" type="number">
+        <label for="parcel_width">Enter the width of your parcel</label>
+        <input name="parcel_width" class="form-control" type="number">
+      </div>
+      <button type="submit" class="btn">Check your parcel</button>
+    </form>
